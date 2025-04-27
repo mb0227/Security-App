@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "homepage": "https://mb0227.github.io/password-toolkit",
-  "scripts": {
+"scripts": {
   "dev": "vite",
   "build": "vite build",
   "postbuild": "cp dist/index.html dist/404.html",
   "lint": "eslint .",
   "preview": "vite preview",
-  "predeploy": "npm run build && npm run postbuild",
+  "predeploy": "npm run build",
   "deploy": "gh-pages -d dist"
 },
   "dependencies": {
