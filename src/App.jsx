@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { HashRouter as Router, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import { ThemeProvider, useThemeContext } from "./pages/contexts/ThemeContext";
 import Generator from "./pages/Generator";
 import StrengthTester from "./pages/StrengthTester";
@@ -21,7 +21,7 @@ import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/password-toolkit">
       <ThemeProvider>
         <AppContent />
       </ThemeProvider>

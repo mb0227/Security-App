@@ -5,13 +5,14 @@
   "type": "module",
   "homepage": "https://mb0227.github.io/password-toolkit",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
+  "dev": "vite",
+  "build": "vite build",
+  "postbuild": "cp dist/index.html dist/404.html",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "predeploy": "npm run build && npm run postbuild",
+  "deploy": "gh-pages -d dist"
+},
   "dependencies": {
     "@tailwindcss/vite": "^4.0.15",
     "blueimp-md5": "^2.19.0",
