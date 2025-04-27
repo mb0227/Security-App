@@ -35,7 +35,7 @@ npm install
 ### 3. Run Locally
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Technologies Used
