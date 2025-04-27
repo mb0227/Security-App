@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
-import useUser from "./hooks/useUser";
 import { useThemeContext } from "./contexts/ThemeContext";
 
 // Top 100 common passwords (typically found in password breach datasets)
@@ -61,7 +60,7 @@ function generateRainbowTable(passwordList) {
   return table;
 }
 
-export default function RainbowTable({ setAuth }) {
+export default function RainbowTable() {
   const {theme} = useThemeContext();
   const [input, setInput] = useState("");
   const [result, setResult] = useState(null);
@@ -75,29 +74,6 @@ export default function RainbowTable({ setAuth }) {
   const [filterLength, setFilterLength] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const { user, load, error } = useUser(setAuth);
-
-  if (load) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500 mx-auto"></div>
-          <p className="mt-4 text-teal-100">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
-
 
   // Generate the table when component mounts
   useEffect(() => {

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
-import useUser from "./hooks/useUser";
 import { useThemeContext } from "./contexts/ThemeContext";
 
-function HashGenerator({setAuth}) {
-  const { user, loading, error } = useUser(setAuth);
+function HashGenerator() {
   const [input, setInput] = useState("");
   const [results, setResults] = useState({});
   const [selectedHashes, setSelectedHashes] = useState({
@@ -112,26 +110,6 @@ function HashGenerator({setAuth}) {
 
   const themeClasses = getThemeClasses();
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500 mx-auto"></div>
-          <p className="mt-4 text-teal-100">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
   return (
     <div className={`flex items-center justify-center min-h-screen ${themeClasses.background} ${themeClasses.text} p-5`}>
       <div className={`${themeClasses.card} p-8 rounded-2xl shadow-xl w-full max-w-2xl text-center border`}>

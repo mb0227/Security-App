@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useUser from "./hooks/useUser";
 import { useThemeContext } from "./contexts/ThemeContext";
 
 // SHA-1 hash using Web Crypto API
@@ -13,34 +12,11 @@ async function sha1(str) {
     .toUpperCase();
 }
 
-export default function PasswordLeakChecker({setAuth}) {
-  const { user, loading, error } = useUser(setAuth);
+export default function PasswordLeakChecker() {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
   const [checking, setChecking] = useState(false);
   const {theme} = useThemeContext();
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500 mx-auto"></div>
-          <p className="mt-4 text-teal-100">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
-
 
   const getThemeClasses = () => {
     return theme === "dark" ? {

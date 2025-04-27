@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import useUser from "./hooks/useUser";
 import { useThemeContext } from "./contexts/ThemeContext";
 
-function CipherGenerator({setAuth}) {
-  const { user, loading, error } = useUser(setAuth);
+function CipherGenerator() {
   const [input, setInput] = useState("");
   const [key, setKey] = useState("");
   const [keyword, setKeyword] = useState("");
@@ -313,26 +311,6 @@ function CipherGenerator({setAuth}) {
     return selectedCipher === "vigenere";
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500 mx-auto"></div>
-          <p className="mt-4 text-teal-100">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className={`flex items-center justify-center min-h-screen ${themeClasses.background} ${themeClasses.text} p-5`}>
